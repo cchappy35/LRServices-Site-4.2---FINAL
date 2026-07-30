@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /thank-you
+
+# Add your live domain here once DNS is cut over, e.g.
+# Sitemap: https://lrslandservices.com/sitemap.xml

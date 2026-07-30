@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-colorway="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — LRS Land Services</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    :root { --orange: oklch(55% 0.15 230); --orange-dark: oklch(42% 0.14 230); }
+    .msg-wrap {
+      min-height: 62vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 1.5rem 5rem; text-align: center;
+      background: var(--cream);
+    }
+    .msg-inner { max-width: 620px; }
+    .msg-kicker {
+      font-family: var(--font-display); font-weight: 700; font-size: 13px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .msg-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(30px, 6vw, 46px); line-height: 1.06;
+      text-transform: uppercase; letter-spacing: 0.01em;
+      color: var(--text-dark); margin: 0 0 1.1rem;
+    }
+    .msg-body { font-size: 17px; line-height: 1.65; color: var(--text-mid); margin: 0 0 2.2rem; }
+    .msg-actions .btn-outline {
+      color: var(--text-dark);
+      border-color: var(--text-dark);
+    }
+    .msg-actions .btn-outline:hover {
+      background: var(--text-dark);
+      color: var(--warm-white);
+    }
+    .msg-actions { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="logo-main">LRS Land Services</span>
+      <span class="logo-sub">Southeast Land Clearing</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/about#contact">Contact</a></li>
+    </ul>
+    <a href="tel:4048891105" class="nav-phone">404-889-1105</a>
+    <a href="/about#contact" class="btn-nav">Request a Quote</a>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+  <a href="/about#contact">Contact</a>
+  <a href="tel:4048891105">404-889-1105</a>
+  <a href="/about#contact" class="mobile-cta">Request a Quote →</a>
+</div>
+
+
+
+<div class="msg-wrap">
+  <div class="msg-inner">
+    <div class="msg-kicker">Request Received</div>
+    <h1 class="msg-title">Thanks — We've<br>Got Your Request</h1>
+    <p class="msg-body">A member of the LRS team will follow up within one business day. If your project is storm-related or time-critical, call us directly for 24/7 rapid mobilization.</p>
+    <div class="msg-actions">
+      <a href="/services" class="btn-primary">Explore Our Services</a>
+      <a href="tel:4048891105" class="btn-outline">Call 404-889-1105</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-main">LRS Land Services</div>
+      <div class="logo-sub">Southeast Land Clearing &amp; ROW Specialists</div>
+      <p>A decade of trusted land clearing, vegetation management, and right-of-way services across the Southeast United States.</p>
+      <div class="footer-contact-item"><span class="icon">📞</span> <a href="tel:4048891105">404-889-1105</a></div>
+      <div class="footer-contact-item"><span class="icon">✉️</span> <a href="mailto:Logan@lrslandservices.com">Logan@lrslandservices.com</a></div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services">Right of Way Clearing</a></li>
+        <li><a href="/services">High Voltage / Transmission</a></li>
+        <li><a href="/services">Vegetation Management</a></li>
+        <li><a href="/services">Wetland Mitigation</a></li>
+        <li><a href="/services">Storm Restoration</a></li>
+        <li><a href="/services">Site Prep</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About LRS</a></li>
+        <li><a href="/services#safety">Safety &amp; Certs</a></li>
+        <li><a href="/about#gallery">Project Gallery</a></li>
+        <li><a href="/about#contact">Contact Us</a></li>
+        <li><a href="/about#contact">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Area</h4>
+      <div class="footer-states">TX · LA · MS · AL<br>GA · FL · SC · NC<br>TN · VA</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 LRS Land Services. All rights reserved.</span>
+    <span>Southeast Land Clearing &amp; ROW Specialists</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

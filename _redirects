@@ -1,0 +1,15 @@
+# Cloudflare Pages — redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+# Same file format Netlify used, so these carry over cleanly.
+
+# Legacy .html URLs from the Netlify deploy -> clean URLs
+/index.html      /            301
+/about.html      /about       301
+/services.html   /services    301
+
+# Common inbound variants
+/contact         /about#contact   301
+/quote           /about#contact   301
+/gallery         /about#gallery   301
+/safety          /services#safety 301
+/home            /            301

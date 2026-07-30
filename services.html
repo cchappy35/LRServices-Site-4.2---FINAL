@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" data-colorway="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services & Safety — LRS Land Services</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* Force steel blue accent */
+    :root { --orange: oklch(55% 0.15 230); --orange-dark: oklch(42% 0.14 230); }
+    /* ── Services full grid ───────────────────────────────────────────────── */
+    .services-full {
+      padding: 5rem 2rem 6rem;
+      background: var(--warm-white);
+    }
+    .services-full-inner { max-width: 1280px; margin: 0 auto; }
+
+    .services-full-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .svc-card {
+      background: var(--warm-white);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.18s;
+      overflow: hidden;
+    }
+    .svc-card:hover { background: var(--cream); }
+    .svc-img {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--cream);
+      flex-shrink: 0;
+      transition: transform 0.4s ease;
+    }
+    .svc-card:hover .svc-img { transform: scale(1.04); }
+    .svc-content {
+      padding: 1.75rem 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+    }
+    .svc-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .svc-card:hover 
+    .svc-title-area {}
+    .svc-num {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.2rem;
+    }
+    .svc-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--green-darkest);
+      line-height: 1.2;
+    }
+    .svc-desc {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+    .svc-usecase {
+      padding: 0.65rem 0.8rem;
+      background: oklch(94% 0.012 155);
+      border-left: 3px solid var(--orange);
+      font-size: 12px;
+      color: var(--text-mid);
+      font-style: italic;
+      border-radius: 0 2px 2px 0;
+      margin-top: auto;
+    }
+
+    /* ── Markets section ──────────────────────────────────────────────────── */
+    .markets-section {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+    .markets-inner { max-width: 1280px; margin: 0 auto; }
+    .markets-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .market-card {
+      background: var(--warm-white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .market-card:hover {
+      box-shadow: var(--shadow-strong);
+      transform: translateY(-3px);
+    }
+    .market-card-ph {
+      height: 140px;
+    }
+    .market-card-body { padding: 1.5rem; }
+    .market-card-icon {
+      font-size: 28px;
+      margin-bottom: 0.75rem;
+    }
+    .market-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--green-darkest);
+      margin-bottom: 0.6rem;
+    }
+    .market-card p {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+    .market-services {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .market-tag {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    /* ── Safety full ──────────────────────────────────────────────────────── */
+    .safety-full {
+      background: var(--green-darkest);
+      padding: 7rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .safety-full::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg, transparent, transparent 60px,
+        oklch(100% 0 0 / 0.015) 60px, oklch(100% 0 0 / 0.015) 61px
+      );
+    }
+    .safety-full-inner { max-width: 1280px; margin: 0 auto; position: relative; }
+
+    .safety-two-col {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .safety-statement-block {}
+    .safety-big-quote {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      color: var(--warm-white);
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+    .safety-big-quote em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .safety-body-text {
+      font-size: 15px;
+      color: oklch(62% 0.04 155);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .safety-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .safety-stat-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      background: oklch(18% 0.05 155);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--orange);
+    }
+    .safety-stat-icon { font-size: 20px; }
+    .safety-stat-text {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+    }
+
+    .cert-full-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: oklch(22% 0.05 155);
+      border: 1px solid oklch(22% 0.05 155);
+      border-radius: var(--radius);
+      overflow: hidden;
+      align-items: stretch;
+    }
+    .cert-full-item {
+      background: oklch(16% 0.045 155);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: background 0.18s;
+    }
+    .cert-full-item:hover { background: oklch(20% 0.055 155); }
+    .cert-full-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .cert-full-info {}
+    .cert-full-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      margin-bottom: 0.2rem;
+    }
+    .cert-full-type {
+      font-size: 12px;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .cert-full-desc {
+      font-size: 13px;
+      color: oklch(55% 0.04 155);
+      line-height: 1.5;
+    }
+
+    /* ── CTA strip ────────────────────────────────────────────────────────── */
+    .services-cta {
+      background: var(--orange);
+      padding: 4rem 2rem;
+    }
+    .services-cta-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .services-cta h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 48px);
+      text-transform: uppercase;
+      color: var(--warm-white);
+    }
+    .services-cta p {
+      font-size: 15px;
+      color: oklch(95% 0.03 48);
+      margin-top: 0.4rem;
+    }
+    .btn-white {
+      display: inline-block;
+      background: var(--warm-white);
+      color: var(--orange-dark);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-sm);
+    }
+    .btn-white:hover { opacity: 0.9; }
+    .btn-white-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--warm-white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid oklch(100% 0 0 / 0.4);
+    }
+    .btn-white-outline:hover { border-color: var(--warm-white); }
+
+    /* ── Responsive ───────────────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .services-full-grid { grid-template-columns: repeat(2, 1fr); }
+      .markets-grid { grid-template-columns: repeat(2, 1fr); }
+      .safety-two-col { grid-template-columns: 1fr; gap: 3rem; }
+      .cert-full-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .services-full,
+      .markets-section,
+      .services-cta { padding: 4rem 1.25rem; }
+      .safety-full { padding: 4.5rem 1.25rem; }
+      .services-full-grid { grid-template-columns: 1fr; }
+      .markets-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .cert-full-grid { grid-template-columns: 1fr; }
+      .svc-content { padding: 1.5rem 1.5rem 1.75rem; }
+      .svc-img { height: 180px; }
+      .market-card-body { padding: 1.25rem; }
+      .cert-full-item { padding: 1.25rem; }
+      .services-cta-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="logo-main">LRS Land Services</span>
+      <span class="logo-sub">Southeast Land Clearing</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services" class="active">Services</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/about#contact">Contact</a></li>
+    </ul>
+    <a href="tel:4048891105" class="nav-phone">404-889-1105</a>
+    <a href="/about#contact" class="btn-nav">Request a Quote</a>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+  <a href="/about#contact">Contact</a>
+  <a href="tel:4048891105">404-889-1105</a>
+  <a href="/about#contact" class="mobile-cta">Request a Quote →</a>
+</div>
+
+<div class="page-body">
+
+<!-- ── Page Hero ────────────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">LRS Land Services</div>
+    <h1 class="page-hero-title">Services &amp;<br>Safety</h1>
+    <p class="page-hero-sub">Twelve specialized service lines, executed by certified crews with an unmatched safety record across the Southeast.</p>
+  </div>
+</section>
+
+<!-- ── Full Services Grid ───────────────────────────────────────────────────── -->
+<section class="services-full" id="services">
+  <div class="services-full-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">All Services</h2>
+    <p class="section-sub">From initial clearing to long-term maintenance, LRS manages the full land services lifecycle.</p>
+
+    <div class="services-full-grid">
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/high-voltage-trans-clearing.jpg'); background-position:center 55%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">01</div>
+              <div class="svc-name">High Voltage / Transmission Line Clearing</div>
+            </div>
+          </div>
+          <p class="svc-desc">Certified clearing along live transmission corridors. Crews hold hotline tag certs and electrical hazard certs, enabling safe proximity to energized infrastructure. We work with IOUs, co-ops, and power authorities throughout the Southeast.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/right-of-way-clearing.jpg'); background-position:center 60%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">02</div>
+              <div class="svc-name">Right of Way Clearing</div>
+            </div>
+          </div>
+          <p class="svc-desc">Complete ROW establishment from initial clearing through long-term maintenance. We handle all vegetation types across pipeline, powerline, roadway, and communication corridors, meeting utility and regulatory standards.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/vegetation-management.jpg'); background-position:center 60%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">03</div>
+              <div class="svc-name">Vegetation Management</div>
+            </div>
+          </div>
+          <p class="svc-desc">Scheduled and reactive vegetation management to keep corridors clear and compliant. Programs are designed to NERC, FERC, and individual utility standards, with full documentation and as-built reporting.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/wetland.jpg'); background-position:center 50%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">04</div>
+              <div class="svc-name">Wetland Mitigation</div>
+            </div>
+          </div>
+          <p class="svc-desc">Permitted wetland clearing and mitigation executed in coordination with environmental agencies and project environmental managers. We understand 404/401 permit compliance and minimize impact to sensitive areas.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/row-restoration.jpg'); background-position:center 55%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">05</div>
+              <div class="svc-name">ROW Restoration</div>
+            </div>
+          </div>
+          <p class="svc-desc">Post-construction restoration of disturbed right-of-way corridors, including seeding, erosion control, and revegetation to specification. We return disturbed areas to a stable, compliant condition.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/matting.jpg'); background-position:center 60%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">06</div>
+              <div class="svc-name">Mat Laying / Line Support Crew</div>
+            </div>
+          </div>
+          <p class="svc-desc">Timber mat installation and management for heavy equipment access across soft, wet, or sensitive terrain. Support crew services for drilling operations, directional boring, and construction mobilization.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/isa-certified-arborist.png'); background-size:contain; background-repeat:no-repeat; background-color:#ffffff; background-position:center;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">07</div>
+              <div class="svc-name">Arborists</div>
+            </div>
+          </div>
+          <p class="svc-desc">ISA-certified arborists on staff for technical tree removal, hazard tree assessment, and high-value tree work requiring expert evaluation. Available for both field operations and consulting roles on complex projects.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/access-roads.jpg'); background-position:center 60%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">08</div>
+              <div class="svc-name">Access Roads</div>
+            </div>
+          </div>
+          <p class="svc-desc">Construction of temporary and permanent access roads to support project mobilization and ongoing maintenance operations. We handle clearing, grading, culvert installation, and gravel/aggregate placement.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/dead-fall.jpg'); background-position:center 60%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">09</div>
+              <div class="svc-name">Dead Fall Clean Up</div>
+            </div>
+          </div>
+          <p class="svc-desc">Removal and disposal of fallen and hazard timber from ROW corridors, utility easements, and project sites. Efficient mobilization for both routine maintenance and post-storm clearance operations.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/site-prep.jpg'); background-position:center 60%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">10</div>
+              <div class="svc-name">Site Prep</div>
+            </div>
+          </div>
+          <p class="svc-desc">Full site preparation services including clearing, grubbing, rough grading, and stump removal ahead of construction activities. We work to tight schedules and coordinate with GCs for seamless project transitions.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/img-6658.jpg'); background-position:center 50%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">11</div>
+              <div class="svc-name">Storm Restoration / Clean Up</div>
+            </div>
+          </div>
+          <p class="svc-desc">Rapid-response storm debris removal, hazard tree mitigation, and corridor restoration following severe weather events. We maintain standby capacity for emergency response and work directly with utilities and municipalities.</p>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img" style="background-image:url('/uploads/debris-management.jpg'); background-position:center 82%;"></div>
+        <div class="svc-content">
+          <div class="svc-top">
+            <div class="svc-title-area">
+              <div class="svc-num">12</div>
+              <div class="svc-name">Debris Management</div>
+            </div>
+          </div>
+          <p class="svc-desc">Comprehensive debris collection, processing, and disposal services for clearing and storm work. Options include chipping, grinding, burning (where permitted), and haul-off to approved facilities.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Markets Served ────────────────────────────────────────────────────────── -->
+<section class="markets-section" id="markets">
+  <div class="markets-inner">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Markets We Serve</h2>
+    <p class="section-sub">LRS has the certifications, experience, and capacity to work across the most demanding infrastructure markets.</p>
+    <div class="markets-grid">
+
+      <div class="market-card">
+        <div class="market-card-ph" style="background-image:url('/uploads/gas-oil-c405c227.jpg'); background-size:cover; background-position:center 60%;"></div>
+        <div class="market-card-body">
+                    <h3>Oil &amp; Gas</h3>
+          <p>Pipeline ROW clearing, access road construction, mat laying, and site prep for upstream, midstream, and downstream operators. We understand the speed and safety requirements of oil and gas project schedules.</p>
+          <div class="market-services">
+            <span class="market-tag">ROW Clearing</span>
+            <span class="market-tag">Mat Laying</span>
+            <span class="market-tag">Access Roads</span>
+            <span class="market-tag">Site Prep</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-ph" style="background-image:url('/uploads/img-4077.jpg'); background-size:cover; background-position:center 30%;"></div>
+        <div class="market-card-body">
+                    <h3>Overhead Electrical</h3>
+          <p>Transmission and distribution ROW management for utilities, co-ops, and power authorities. Hotline-tagged and electrically-certified crews for safe work near energized infrastructure at any voltage level.</p>
+          <div class="market-services">
+            <span class="market-tag">HV / Transmission</span>
+            <span class="market-tag">Veg Management</span>
+            <span class="market-tag">ROW Restoration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-ph" style="background-image:url('/uploads/img-5395.jpg'); background-size:cover; background-position:center 50%;"></div>
+        <div class="market-card-body">
+                    <h3>Solar</h3>
+          <p>Site clearing, grubbing, and access road construction for utility-scale solar developments. We work with EPCs and developers to meet aggressive construction timelines across large-acreage sites.</p>
+          <div class="market-services">
+            <span class="market-tag">Site Prep</span>
+            <span class="market-tag">Access Roads</span>
+            <span class="market-tag">Debris Mgmt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-ph" style="background-image:url('/uploads/img-2991.jpg'); background-size:cover; background-position:center;"></div>
+        <div class="market-card-body">
+                    <h3>DOT</h3>
+          <p>State and federal DOT right-of-way clearing, wetland mitigation, and vegetation management for highway, interchange, and bridge projects. Traffic Safety Supervisor certified crews for all active roadway work.</p>
+          <div class="market-services">
+            <span class="market-tag">ROW Clearing</span>
+            <span class="market-tag">Wetland Mitigation</span>
+            <span class="market-tag">Traffic Safety</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-ph" style="background-image:url('/uploads/img-1247.jpg'); background-size:cover; background-position:center 60%;"></div>
+        <div class="market-card-body">
+                    <h3>US Military</h3>
+          <p>IDIQ and task-order land clearing and vegetation management for Army, Air Force, and Navy installations across the Southeast. We understand base access requirements, security protocols, and federal contracting standards.</p>
+          <div class="market-services">
+            <span class="market-tag">Site Clearing</span>
+            <span class="market-tag">Veg Management</span>
+            <span class="market-tag">Federal Contract</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-card-ph" style="background-image:url('/uploads/5999272686958560674.jpg'); background-size:cover; background-position:center;"></div>
+        <div class="market-card-body">
+                    <h3>Municipalities</h3>
+          <p>City and county land clearing, storm debris response, and right-of-way maintenance. We are experienced with public procurement, prevailing wage requirements, and the coordination demands of working in active communities.</p>
+          <div class="market-services">
+            <span class="market-tag">Storm Response</span>
+            <span class="market-tag">Debris Mgmt</span>
+            <span class="market-tag">ROW Maint.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Safety Full ───────────────────────────────────────────────────────────── -->
+<section class="safety-full" id="safety">
+  <div class="safety-full-inner">
+    <div class="section-label" style="color: var(--orange)">Safety &amp; Certifications</div>
+    <h2 class="section-title light">Our Safety Program</h2>
+
+    <div class="safety-two-col">
+
+      <div class="safety-statement-block">
+        <p class="safety-big-quote">"Safety isn't a<br>requirement.<br>It's how we <em>operate.</em>"</p>
+        <p class="safety-body-text">Every LRS crew member arrives on site trained, certified, and accountable. We don't treat safety as a checkbox for procurement teams — it's the standard our people are held to every single day, on every single job.</p>
+        <p class="safety-body-text">Our safety culture has been built over 10 years of working adjacent to live transmission lines, active roadways, and in sensitive environmental areas. Zero tolerance for shortcuts. Full documentation on every project.</p>
+        <div class="safety-stats">
+          <div class="safety-stat-row">
+                        <span class="safety-stat-text">100% of field crew OSHA-certified</span>
+          </div>
+          <div class="safety-stat-row">
+                        <span class="safety-stat-text">Full documentation on every project</span>
+          </div>
+          <div class="safety-stat-row">
+                        <span class="safety-stat-text">Hotline-tagged for energized line work</span>
+          </div>
+          <div class="safety-stat-row">
+                        <span class="safety-stat-text">CPR/First Aid — crew-wide certification</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-full-grid">
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">OSHA 10</div>
+            <div class="cert-full-type">Federal Safety Standard</div>
+            <div class="cert-full-desc">10-hour OSHA construction safety certification held by all field personnel. Covers hazard recognition, fall protection, and general safety standards.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">OSHA 30</div>
+            <div class="cert-full-type">Supervisory Safety</div>
+            <div class="cert-full-desc">30-hour OSHA certification for supervisors and foremen. Covers in-depth safety management, OSHA standards, and crew oversight responsibilities.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">Arborist</div>
+            <div class="cert-full-type">ISA Certified</div>
+            <div class="cert-full-desc">International Society of Arboriculture (ISA) Certified Arborists on staff for technical tree assessments, hazard evaluations, and complex removals.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">CPR / First Aid</div>
+            <div class="cert-full-type">Crew-Wide</div>
+            <div class="cert-full-desc">All field personnel hold current CPR and First Aid certifications, ensuring emergency response capability at every work site, every day.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">Traffic Safety Supervisor</div>
+            <div class="cert-full-type">DOT / Active Roadway</div>
+            <div class="cert-full-desc">Certified Traffic Safety Supervisors on every project requiring work adjacent to or within active roadway corridors. MUTCD-compliant traffic control.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">Flagging Training</div>
+            <div class="cert-full-type">Traffic Control</div>
+            <div class="cert-full-desc">State-certified traffic control flagging on all projects with roadway exposure, meeting DOT and MUTCD requirements across all Southeast jurisdictions.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">Hotline Tag Certs</div>
+            <div class="cert-full-type">Energized Lines</div>
+            <div class="cert-full-desc">Crew members hold hotline tag certifications authorizing work within proximity of energized transmission and distribution infrastructure.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">Electrical Hazard Certs</div>
+            <div class="cert-full-type">High Voltage</div>
+            <div class="cert-full-desc">Electrical hazard awareness and proximity training certifications for all crew members who work near or beneath high-voltage transmission structures.</div>
+          </div>
+        </div>
+        <div class="cert-full-item">
+                    <div class="cert-full-info">
+            <div class="cert-full-name">Aerial / Bucket Training</div>
+            <div class="cert-full-type">Elevated Work</div>
+            <div class="cert-full-desc">Certified aerial lift and bucket truck operators for elevated tree work, line clearing, and hazard removal. ANSI A92 compliant.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ──────────────────────────────────────────────────────────────────── -->
+<section class="services-cta">
+  <div class="services-cta-inner">
+    <div>
+      <h2>Ready to Get Started?</h2>
+      <p>Contact us to discuss your project scope, timeline, and requirements. We respond within one business day.</p>
+    </div>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="/about#contact" class="btn-white">Request a Quote</a>
+      <a href="tel:4048891105" class="btn-white-outline">Call 404-889-1105</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- end page-body -->
+
+<!-- ── Footer ───────────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-main">LRS Land Services</div>
+      <div class="logo-sub">Southeast Land Clearing &amp; ROW Specialists</div>
+      <p>A decade of trusted land clearing, vegetation management, and right-of-way services across the Southeast United States.</p>
+      <div class="footer-contact-item"><span class="icon">📞</span> <a href="tel:4048891105">404-889-1105</a></div>
+      <div class="footer-contact-item"><span class="icon">✉️</span> <a href="mailto:Logan@lrslandservices.com">Logan@lrslandservices.com</a></div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Right of Way Clearing</a></li>
+        <li><a href="#services">High Voltage / Transmission</a></li>
+        <li><a href="#services">Vegetation Management</a></li>
+        <li><a href="#services">Wetland Mitigation</a></li>
+        <li><a href="#services">Storm Restoration</a></li>
+        <li><a href="#services">Site Prep</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About LRS</a></li>
+        <li><a href="#safety">Safety &amp; Certs</a></li>
+        <li><a href="/about#gallery">Project Gallery</a></li>
+        <li><a href="/about#contact">Contact Us</a></li>
+        <li><a href="/about#contact">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Area</h4>
+      <div class="footer-states">TX · LA · MS · AL<br>GA · FL · SC · NC<br>TN · VA</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 LRS Land Services. All rights reserved.</span>
+    <span>Southeast Land Clearing &amp; ROW Specialists</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

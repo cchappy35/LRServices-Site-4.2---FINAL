@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#0d2318"/>
+  <path d="M8 46h48" stroke="#2b8fd6" stroke-width="5" stroke-linecap="round"/>
+  <text x="32" y="36" font-family="Barlow Condensed, Arial Narrow, Helvetica, sans-serif"
+        font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle"
+        letter-spacing="0.5">LRS</text>
+</svg>

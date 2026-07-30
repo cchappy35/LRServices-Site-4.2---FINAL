@@ -1,0 +1,894 @@
+<!DOCTYPE html><html lang="en" data-colorway="green" style="--orange: oklch(55% 0.15 230); --orange-dark: oklch(42% 0.14 230);"><head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LRS Land Services — Clearing the Way Across the Southeast</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/shared.css">
+  <style>
+    /* ── Hero ────────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/uploads/img-6658-85b6f6cc.jpg');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        oklch(10% calc(0.04 * var(--cw-c-mul, 1)) var(--cw-h, 155) / 0.88) 0%,
+        oklch(10% calc(0.04 * var(--cw-c-mul, 1)) var(--cw-h, 155) / 0.72) 50%,
+        oklch(10% calc(0.04 * var(--cw-c-mul, 1)) var(--cw-h, 155) / 0.45) 100%
+      );
+    }
+    .hero-ph-label {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: oklch(40% calc(0.04 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      z-index: 2;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(52px, 8.5vw, 100px);
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      color: var(--warm-white);
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: oklch(72% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2.5rem;
+      border-top: 1px solid oklch(30% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+    }
+    .hero-stat {}
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 0.02em;
+      color: var(--warm-white);
+      line-height: 1;
+    }
+    .hero-stat-num span { color: var(--orange); }
+    .hero-stat-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: oklch(55% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      margin-top: 0.3rem;
+    }
+
+    /* ── Markets bar ──────────────────────────────────────────────────────── */
+    .markets-bar {
+      background: var(--green-dark);
+      padding: 1.25rem 2rem;
+      border-bottom: 2px solid oklch(28% calc(0.06 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+    }
+    .markets-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .markets-bar-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: oklch(50% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      flex-shrink: 0;
+    }
+    .markets-bar-items {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .market-chip {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: oklch(75% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      padding: 0.3rem 0.85rem;
+      border: 1px solid oklch(32% calc(0.06 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      border-radius: 2px;
+      transition: all 0.15s;
+    }
+    .market-chip:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* ── Services preview ─────────────────────────────────────────────────── */
+    .services-section {
+      padding: 6rem 2rem;
+      background: var(--warm-white);
+    }
+    .services-inner { max-width: 1280px; margin: 0 auto; }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    .service-card {
+      background: var(--warm-white);
+      padding: 0;
+      transition: background 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .service-card:hover { background: var(--cream); }
+    .service-card:hover .service-icon { color: var(--orange); }
+    .service-card-img {
+      height: 170px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--cream);
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover .service-card-img { transform: scale(1.04); }
+    .service-card-body {
+      padding: 1.75rem 2rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 1rem;
+      color: var(--green-mid);
+      transition: color 0.2s;
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--green-darkest);
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .service-use-case {
+      margin-top: 1rem;
+      padding: 0.6rem 0.75rem;
+      background: oklch(94% calc(0.015 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      border-left: 3px solid var(--orange);
+      font-size: 12px;
+      color: var(--text-mid);
+      font-style: italic;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── Safety strip ─────────────────────────────────────────────────────── */
+    .safety-section {
+      background: var(--green-darkest);
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .safety-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        oklch(100% 0 0 / 0.02) 60px,
+        oklch(100% 0 0 / 0.02) 61px
+      );
+    }
+    .safety-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .safety-header { margin-bottom: 2rem; text-align: center; }
+    .safety-statement {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 400;
+      color: oklch(72% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      max-width: 640px;
+      line-height: 1.55;
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+    .safety-inner { text-align: center; }
+    .safety-inner .cert-grid { text-align: left; }
+    .cert-badge {
+      border: 1px solid oklch(28% calc(0.06 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      width: 100%;
+    }
+    .cert-badge:hover {
+      border-color: var(--orange);
+      background: oklch(18% calc(0.05 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+    }
+    .cert-badge-icon {
+      font-size: 26px;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .cert-badge-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      line-height: 1.3;
+    }
+    .cert-badge-type {
+      font-size: 11px;
+      color: oklch(50% calc(0.04 * var(--cw-c-mul, 1)) var(--cw-h, 155));
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── About teaser ──────────────────────────────────────────────────────── */
+    .about-teaser {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+    .about-teaser-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-teaser-copy h2 { margin-bottom: 1.25rem; }
+    .about-teaser-copy p {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .about-teaser-copy .cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .differentiator-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+    .differentiator-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 15px;
+      color: var(--text-mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .differentiator-list li:last-child { border-bottom: none; }
+    .differentiator-list .check {
+      color: var(--orange);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .about-ph {
+      height: 500px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-strong);
+    }
+
+    /* ── CTA banner ───────────────────────────────────────────────────────── */
+    .cta-banner {
+      background: var(--orange);
+      padding: 5rem 2rem;
+    }
+    .cta-banner-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-banner h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(32px, 5vw, 54px);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--warm-white);
+      line-height: 1.05;
+    }
+    .cta-banner p {
+      font-size: 16px;
+      color: oklch(95% 0.03 48);
+      margin-top: 0.5rem;
+      max-width: 480px;
+    }
+    .cta-banner-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .btn-white {
+      display: inline-block;
+      background: var(--warm-white);
+      color: var(--orange-dark);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-sm);
+      transition: opacity 0.15s;
+    }
+    .btn-white:hover { opacity: 0.9; }
+    .btn-white-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--warm-white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-sm);
+      border: 2px solid oklch(100% 0 0 / 0.4);
+      transition: border-color 0.15s;
+    }
+    .btn-white-outline:hover { border-color: var(--warm-white); }
+
+    /* ── Responsive ───────────────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: repeat(3, 1fr); }
+      .about-teaser-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-ph { height: 320px; }
+      .services-section, .about-teaser, .safety-section { padding: 4.5rem 1.5rem; }
+      .hero-inner { padding: 0 1.5rem; }
+      .hero-stats { gap: 2rem; }
+      .markets-bar { padding: 1rem 1.5rem; }
+      .cta-banner { padding: 4rem 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      /* Hero — taller breathing room, larger type, mobile-native feel */
+      .hero { min-height: auto; padding: 4.5rem 0 3.5rem; }
+      .hero-inner { padding: 0 1.25rem; }
+      .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; margin-bottom: 1rem; }
+      .hero-eyebrow::before { width: 20px; }
+      .hero-title { font-size: 44px; line-height: 1; margin-bottom: 1.25rem; }
+      .hero-sub { font-size: 16px; line-height: 1.55; margin-bottom: 2rem; max-width: 100%; }
+
+      /* Full-width stacked pill CTAs — the dominant mobile pattern */
+      .hero-ctas { flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; align-items: stretch; }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-outline { width: 100%; text-align: center; padding: 1.1rem 1rem; font-size: 15px; letter-spacing: 0.06em; }
+
+      /* Stats — 2×2 grid with tight hierarchy */
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem 1rem;
+        padding-top: 2rem;
+      }
+      .hero-stat-num { font-size: 32px; letter-spacing: 0.01em; }
+      .hero-stat-label { font-size: 10px; letter-spacing: 0.14em; }
+
+      /* Markets bar — horizontal-scroll strip (very mobile-native) so chips
+         don't wrap into a tall pile */
+      .markets-bar { padding: 0.85rem 0; border-bottom-width: 1px; }
+      .markets-bar-inner { gap: 0.75rem; flex-wrap: nowrap; padding: 0 1.25rem; }
+      .markets-bar-label { font-size: 9px; }
+      .markets-bar-items {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 1.25rem;
+      }
+      .markets-bar-items::-webkit-scrollbar { display: none; }
+      .market-chip { white-space: nowrap; font-size: 11px; padding: 0.35rem 0.75rem; }
+
+      /* Services — clean stacked cards with chevron affordance */
+      .services-section, .about-teaser, .safety-section { padding: 3.5rem 1.25rem; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.75rem; }
+      .services-grid { grid-template-columns: 1fr; gap: 1px; border-radius: 8px; }
+      .service-card { padding: 0; }
+      .service-card-body { padding: 1.5rem 1.25rem; }
+      .service-card-img { height: 200px; }
+      .service-card::after {
+        content: '→';
+        position: absolute;
+        top: 50%;
+        right: 1.25rem;
+        margin-top: 70px;
+        color: var(--orange);
+        font-size: 20px;
+        opacity: 0.6;
+      }
+      .service-icon { font-size: 24px; margin-bottom: 0.6rem; }
+      .service-card h3 { font-size: 16px; }
+      .service-card p { font-size: 14px; }
+      .service-use-case { font-size: 12px; margin-top: 0.85rem; padding: 0.55rem 0.7rem; }
+
+      /* About teaser image stacks above copy on mobile (order swap) */
+      .about-teaser-inner { gap: 2rem; }
+      .about-ph { height: 240px; order: -1; }
+
+      /* Safety — tighter cert grid with bigger touch targets */
+      .safety-statement { font-size: 17px; line-height: 1.5; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+      .cert-badge { padding: 1rem 0.5rem; min-height: 110px; }
+      .cert-badge-name { font-size: 12px; }
+      .cert-badge-type { font-size: 10px; }
+
+      /* CTA banner — bold mobile block, full-width buttons */
+      .cta-banner { padding: 3rem 1.25rem; }
+      .cta-banner h2 { font-size: 32px; line-height: 1.05; }
+      .cta-banner p { font-size: 15px; }
+      .cta-banner-inner { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+      .cta-banner-buttons { width: 100%; flex-direction: column; gap: 0.6rem; }
+      .btn-white, .btn-white-outline { width: 100%; text-align: center; padding: 1.05rem 1rem; }
+
+      /* Float a sticky call/quote bar at the bottom — classic mobile pattern.
+         Lift content above it so the footer/last section isn't covered. */
+      body { padding-bottom: 64px; }
+      .mobile-action-bar {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        display: flex;
+        z-index: 90;
+        background: var(--green-darkest);
+        border-top: 1px solid oklch(28% 0.06 155);
+        padding-bottom: env(safe-area-inset-bottom, 0);
+      }
+      .mobile-action-bar a {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 0.5rem;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--warm-white);
+      }
+      .mobile-action-bar a + a {
+        border-left: 1px solid oklch(28% 0.06 155);
+        background: var(--orange);
+      }
+    }
+    /* Hide the sticky mobile bar on tablet/desktop */
+    @media (min-width: 641px) {
+      .mobile-action-bar { display: none !important; }
+    }
+    @media (max-width: 640px) {
+      /* shim so the merge with original block continues — keeps line below safe */
+    }
+    @media (max-width: 380px) {
+      .hero-stat-num { font-size: 32px; }
+    }
+  </style>
+</script>
+
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="logo-main">LRS Land Services</span>
+      <span class="logo-sub">Southeast Land Clearing</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/about#contact">Contact</a></li>
+    </ul>
+    <a href="tel:4048891105" class="nav-phone" data-original="404-889-1105">404-889-1105</a>
+    <a href="/about#contact" class="btn-nav">Request a Quote</a>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/services">Services</a>
+  <a href="/about">About</a>
+  <a href="/about#contact">Contact</a>
+  <a href="tel:4048891105">404-889-1105</a>
+  <a href="/about#contact" class="mobile-cta">Request a Quote →</a>
+</div>
+
+<div class="mobile-action-bar">
+  <a href="tel:4048891105">📞 Call</a>
+  <a href="/about#contact">Get Quote →</a>
+</div>
+
+<div class="page-body">
+
+<!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">LRS Land Services — Southeast's Trusted ROW Specialists</div>
+    <h1 class="hero-title" id="heroTitle">Clearing the Way<br>Across the Southeast</h1>
+    <p class="hero-sub" id="heroSub">From Texas to Virginia, LRS delivers right-of-way clearing, vegetation management, and land services that utility, energy, and government clients depend on.</p>
+    <div class="hero-ctas">
+      <a href="/about#contact" class="btn-primary">Request a Quote →</a>
+      <a href="tel:4048891105" class="btn-outline">Call 404-889-1105</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="1500">1,500<span>+</span></div>
+        <div class="hero-stat-label">Projects Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="10">10<span>+ Yrs</span></div>
+        <div class="hero-stat-label">In Operation</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="25">25<span>+</span></div>
+        <div class="hero-stat-label">Employees</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12<span></span></div>
+        <div class="hero-stat-label">Service Categories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Markets bar ──────────────────────────────────────────────────────────── -->
+<div class="markets-bar">
+  <div class="markets-bar-inner">
+    <span class="markets-bar-label">Markets Served</span>
+    <div class="markets-bar-items">
+      <span class="market-chip">Oil &amp; Gas</span>
+      <span class="market-chip">Overhead Electrical</span>
+      <span class="market-chip">Solar</span>
+      <span class="market-chip">DOT</span>
+      <span class="market-chip">US Military</span>
+      <span class="market-chip">Municipalities</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Services Preview ─────────────────────────────────────────────────────── -->
+<section class="services-section">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-sub">Full-spectrum land clearing and vegetation management for demanding infrastructure projects.</p>
+      </div>
+      <a href="/services" class="btn-outline dark">View All 12 Services →</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-img" style="background-image:url('/uploads/high-voltage-trans-clearing.jpg'); background-position:center 55%;"></div>
+        <div class="service-card-body">
+          <h3>High Voltage / Transmission</h3>
+          <p>Certified clearing along live transmission corridors. Our crews are hotline-tagged and electrical-hazard certified for safe proximity to energized lines.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background-image:url('/uploads/right-of-way-clearing.jpg'); background-position:center 60%;"></div>
+        <div class="service-card-body">
+          <h3>Right of Way Clearing</h3>
+          <p>Complete ROW establishment and maintenance from initial clearing to long-term vegetation management programs along pipeline, power, and road corridors.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background-image:url('/uploads/vegetation-management.jpg'); background-position:center 60%;"></div>
+        <div class="service-card-body">
+          <h3>Vegetation Management</h3>
+          <p>Scheduled and reactive vegetation management to keep corridors clear, compliant, and maintained to NERC and utility standards.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background-image:url('/uploads/wetland.jpg'); background-position:center 50%;"></div>
+        <div class="service-card-body">
+          <h3>Wetland Mitigation</h3>
+          <p>Permitted wetland clearing and mitigation work executed in coordination with environmental agencies and project environmental managers.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background-image:url('/uploads/matting.jpg'); background-position:center 60%;"></div>
+        <div class="service-card-body">
+          <h3>Mat Laying / Line Support</h3>
+          <p>Timber mat installation for heavy equipment access across soft or sensitive terrain, supporting drilling, construction, and restoration operations.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-img" style="background-image:url('/uploads/img-6658.jpg'); background-position:center 50%;"></div>
+        <div class="service-card-body">
+          <h3>Storm Restoration</h3>
+          <p>Rapid-response storm debris removal, hazard tree mitigation, and corridor restoration for utilities and municipalities following severe weather events.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Safety ───────────────────────────────────────────────────────────────── -->
+<section class="safety-section">
+  <div class="safety-inner">
+    <div class="safety-header">
+      <div class="section-label" style="color: var(--orange)">Safety First</div>
+      <h2 class="section-title light">Our Certifications</h2>
+      <p class="safety-statement">Every LRS crew member arrives trained, certified, and accountable. Our safety culture isn't a checkbox — it's the foundation that wins contracts and brings crews home.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-badge">
+                <div class="cert-badge-name">OSHA 10</div>
+        <div class="cert-badge-type">Federal Safety</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">OSHA 30</div>
+        <div class="cert-badge-type">Supervisory</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">Arborist</div>
+        <div class="cert-badge-type">ISA Certified</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">CPR / First Aid</div>
+        <div class="cert-badge-type">Crew-Wide</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">Traffic Safety Supervisor</div>
+        <div class="cert-badge-type">DOT / ROW</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">Flagging Training</div>
+        <div class="cert-badge-type">Traffic Control</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">Hotline Tag Certs</div>
+        <div class="cert-badge-type">Energized Lines</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">Electrical Hazard</div>
+        <div class="cert-badge-type">High Voltage</div>
+      </div>
+      <div class="cert-badge">
+                <div class="cert-badge-name">Aerial / Bucket</div>
+        <div class="cert-badge-type">Elevated Work</div>
+      </div>
+    </div>
+    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+      <a href="/services#safety" class="btn-primary">Full Safety Program →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── About teaser ─────────────────────────────────────────────────────────── -->
+<section class="about-teaser">
+  <div class="about-teaser-inner">
+    <div class="about-teaser-copy">
+      <div class="section-label">About LRS</div>
+      <h2 class="section-title">Built on the Southeast.<br>Trusted for a Decade.</h2>
+      <p>LRS Land Services was built from the ground up to serve the infrastructure backbone of the Southeast. With over 1,500 completed projects across Texas, Louisiana, Georgia, Florida, and beyond, our crews deliver on time, on budget, and to spec.</p>
+      <p>We don't sub out core work. Our equipment is owned. Our crews are trained. Our safety record speaks for itself.</p>
+      <ul class="differentiator-list">
+        <li><span class="check">▶</span>Company-owned fleet — no subcontracted surprises</li>
+        <li><span class="check">▶</span>State-licensed across all Southeast jurisdictions</li>
+        <li><span class="check">▶</span>Experienced with military, government &amp; utility procurement</li>
+        <li><span class="check">▶</span>Available for rapid mobilization and storm response</li>
+      </ul>
+      <div class="cta-row">
+        <a href="/about" class="btn-primary">Our Full Story →</a>
+      </div>
+    </div>
+    <div class="about-ph" style="background-image:url('/uploads/img-5546.jpg'); background-size:cover; background-position:center 55%;"></div>
+  </div>
+</section>
+
+<!-- ── CTA Banner ───────────────────────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <div>
+      <h2 id="ctaTitle">Ready to Start Your Project?</h2>
+      <p>Talk to our team about your clearing, ROW, or vegetation management project. We respond within one business day.</p>
+    </div>
+    <div class="cta-banner-buttons">
+      <a href="/about#contact" class="btn-white">Request a Quote</a>
+      <a href="tel:4048891105" class="btn-white-outline">Call 404-889-1105</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- end page-body -->
+
+<!-- ── Footer ───────────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-main">LRS Land Services</div>
+      <div class="logo-sub">Southeast Land Clearing &amp; ROW Specialists</div>
+      <p>A decade of trusted land clearing, vegetation management, and right-of-way services across the Southeast United States.</p>
+      <div class="footer-contact-item"><span class="icon">📞</span> <a href="tel:4048891105">404-889-1105</a></div>
+      <div class="footer-contact-item"><span class="icon">✉️</span> <a href="mailto:Logan@lrslandservices.com">Logan@lrslandservices.com</a></div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services">Right of Way Clearing</a></li>
+        <li><a href="/services">High Voltage / Transmission</a></li>
+        <li><a href="/services">Vegetation Management</a></li>
+        <li><a href="/services">Wetland Mitigation</a></li>
+        <li><a href="/services">Storm Restoration</a></li>
+        <li><a href="/services">Site Prep</a></li>
+        <li><a href="/services">View All Services →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about">About LRS</a></li>
+        <li><a href="/services#safety">Safety &amp; Certs</a></li>
+        <li><a href="/about#gallery">Project Gallery</a></li>
+        <li><a href="/about#contact">Contact Us</a></li>
+        <li><a href="/about#contact">Request a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Area</h4>
+      <div class="footer-states">TX · LA · MS · AL<br>GA · FL · SC · NC<br>TN · VA</div>
+      <div style="margin-top:1rem; font-size:13px; color: oklch(50% calc(0.04 * var(--cw-c-mul, 1)) var(--cw-h, 155));">Southeast United States</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 LRS Land Services. All rights reserved.</span>
+    <span>Southeast Land Clearing &amp; ROW Specialists</span>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Stat counter animation
+  function animateCounters() {
+    document.querySelectorAll('.hero-stat-num[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.querySelector('span').textContent;
+      let current = 0;
+      const step = Math.ceil(target / 60);
+      const interval = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.innerHTML = current.toLocaleString() + '<span>' + suffix + '</span>';
+        if (current >= target) clearInterval(interval);
+      }, 25);
+    });
+  }
+
+  // Trigger on scroll into view
+  const statsObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
+  }, { threshold: 0.3 });
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) statsObserver.observe(statsEl);
+</script>
+
+</body></html>
